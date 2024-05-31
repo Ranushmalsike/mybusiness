@@ -1,0 +1,37 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=mybusiness
+    volumes:
+      - /run/media/rrm/632e09ee-1e29-416a-9620-30d046289e2c/project/mybusiness/:/app
+      - /app/node_modules
+
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mybusiness
+    volumes:
+      - db-data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 9002:80  # Change this line
+    environment:
+      - PMA_HOST=db
+    depends_on:
+      - db
+
+volumes:
+  db-data:
