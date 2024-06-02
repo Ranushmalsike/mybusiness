@@ -1,7 +1,7 @@
 const express = require('express');
-const app = express();
+const bodyParser = require('body-parser');
 const path = require('path');
-const port = 3000;
+const DatabaseOperations = require('./process/prs'); // Import the class
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -12,13 +12,15 @@ app.get('/', (req, res) => {
 });
 
 // Route for /home
-app.get('/home', (req, res) => {
+app.get('/index', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+const dbOps = new DatabaseOperations();
 // Route for /login
 app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+  const { username, password } = req.body;
+  dbOps.loginUser(username, password, res);
 });
 
 // Start the server

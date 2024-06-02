@@ -11,6 +11,6 @@ const checkAuth = (req, res, next) => {
 };
 
 // Apply the middleware to routes that require authentication
-app.get('/home', checkAuth, (req, res) => {
+app.get('/index', checkAuth, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
