@@ -1,0 +1,16 @@
+// Middleware function to check authentication
+const checkAuth = (req, res, next) => {
+  // Dummy check: In real applications, check authentication status here
+  const isAuthenticated = true; // Replace with real authentication logic
+
+  if (isAuthenticated) {
+    next(); // Proceed to the route handler
+  } else {
+    res.redirect('/login'); // Redirect to login page
+  }
+};
+
+// Apply the middleware to routes that require authentication
+app.get('/home', checkAuth, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
