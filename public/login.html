@@ -4,8 +4,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Page</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(45deg, yellow, red, white, blue);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-container h1 {
+      margin-bottom: 20px;
+    }
+
+    .login-container .btn-primary {
+      background-color: #007BFF;
+      border: none;
+    }
+
+    .login-container .btn-primary:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-  <h1>Please Login</h1>
+  <div class="login-container">
+    <h1>Please Login</h1>
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Username" required>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Login</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
