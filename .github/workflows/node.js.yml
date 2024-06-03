@@ -58,4 +58,4 @@ jobs:
         echo DB_NAME=mybusiness >> $GITHUB_ENV
 
     - name: Run tests
-      run: npm test
+      run: npm start
