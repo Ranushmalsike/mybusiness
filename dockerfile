@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base
-FROM node:18-alpine
+FROM node:22.2.0-alpine
 
 # Set the working directory
 WORKDIR /app
@@ -9,6 +9,7 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+RUN npm install mysql2
 
 # Copy the application code
 COPY . .

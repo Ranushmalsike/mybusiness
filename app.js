@@ -2,18 +2,28 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const DatabaseOperations = require('./process/prs'); // Import the class
+const db = require('./db/dbcon.js'); // Import the database connection
+
+const app = express();
+
+// Define the port
+const port = process.env.PORT || 3000; // Use PORT environment variable or default to 3000
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Redirect root to /home
-app.get('/', (req, res) => {
-  res.redirect('/home');
-});
+// Middleware to parse request bodies
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Route for /home
 app.get('/index', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Route for createtable page
+app.get('/tblcreate', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'createTabe.js'));
 });
 
 const dbOps = new DatabaseOperations();
