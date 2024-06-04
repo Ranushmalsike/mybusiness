@@ -23,7 +23,7 @@ app.get('/index', (req, res) => {
 
 // Route for createtable page
 app.get('/tblcreate', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'createTabe.js'));
+  res.sendFile(path.join(__dirname, 'public', 'tbCreate/createTabe.js'));
 });
 
 const dbOps = new DatabaseOperations();
