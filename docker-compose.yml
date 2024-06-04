@@ -27,7 +27,7 @@ services:
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
-      - 9002:80  # Change this line
+      - 9002:80
     environment:
       - PMA_HOST=db
     depends_on:
