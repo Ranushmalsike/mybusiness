@@ -28,9 +28,10 @@ app.get('/tblcreate', (req, res) => {
 
 const dbOps = new DatabaseOperations();
 // Route for /login
-app.get('/login', (req, res) => {
-  const { username, password } = req.body;
-  dbOps.loginUser(username, password, res);
+app.get('/adminpg', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'adminpg.html'));
+  // const { username, password } = req.body;
+  // dbOps.loginUser(username, password, res);
 });
 
 // Start the server
