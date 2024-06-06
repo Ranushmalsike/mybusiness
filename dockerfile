@@ -12,6 +12,7 @@ RUN npm install
 RUN npm install mysql2
 RUN npm install dotenv
 
+
 # Copy the application code
 COPY . .
 
