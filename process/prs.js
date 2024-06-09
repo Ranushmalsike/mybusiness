@@ -21,6 +21,21 @@ class DatabaseOperations {
     }
   
     // Add more methods for other database operations
+    async insertUser(Business, callback) {
+      const query = 'INSERT INTO business (business_name) VALUES (?)';
+      db.execute(query, [Business], callback);
+    }
+
+    async getDataOfBusiness() {
+      try {
+        const query = 'SELECT * FROM business';
+        const [rows] = await db.execute(query);
+        return rows;
+      } catch (err) {
+        throw new Error('Error fetching data');
+      }
+    }
+    
   }
   
   module.exports = DatabaseOperations;
