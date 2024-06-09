@@ -14,6 +14,8 @@ services:
     volumes:
       - /run/media/rrm/632e09ee-1e29-416a-9620-30d046289e2c/project/mybusiness/:/app
       - /app/node_modules
+    networks:
+      - mybusiness-network
 
   db:
     image: mysql:8.0
@@ -22,16 +24,23 @@ services:
       - MYSQL_DATABASE=mybusiness
     volumes:
       - db-data:/var/lib/mysql
+    networks:
+      - mybusiness-network
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
-      - 9002:80  # Change this line
+      - 9002:80
     environment:
       - PMA_HOST=db
     depends_on:
       - db
+    networks:
+      - mybusiness-network
 
 volumes:
   db-data:
+
+networks:
+  mybusiness-network:
